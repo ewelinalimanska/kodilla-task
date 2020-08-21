@@ -20,14 +20,15 @@ public class TaskController {
     @Autowired
     private TaskMapper taskMapper;
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "getTasks")
+    public List<TaskDto> getTasks(){
+        return new ArrayList<>();
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
     public TaskDto getTask(@RequestParam Long taskId) throws TaskNotFoundException{
         return taskMapper.mapToTaskDto(service.getTask(taskId).orElseThrow(TaskNotFoundException::new));
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
-    public void deleteTask(@RequestParam Long taskId){
-        service.deleteTask(taskId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
@@ -40,9 +41,8 @@ public class TaskController {
         service.saveTask(taskMapper.mapToTask (taskDto));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getTasks")
-    public List<TaskDto> getTasks(){
-        return new ArrayList<>();
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
+    public void deleteTask(@RequestParam Long taskId){
+        service.deleteTask(taskId);
     }
-
 }
