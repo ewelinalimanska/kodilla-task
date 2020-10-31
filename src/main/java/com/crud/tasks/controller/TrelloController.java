@@ -22,32 +22,32 @@ public class TrelloController {
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public void getTrelloBoards() {
 
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.stream()
-                .filter(n -> !n.getId().isEmpty())
-                .filter(n -> !n.getName().isEmpty())
-                .filter(n -> n.getName().contains("Kodilla"));
-
-
-        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
-
-    }
-
-        // GET request
 //        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 //
-//        trelloBoards.forEach(trelloBoardDto -> {
+//        trelloBoards.stream()
+//                .filter(n -> !n.getId().isEmpty())
+//                .filter(n -> !n.getName().isEmpty())
+//                .filter(n -> n.getName().contains("Kodilla"));
 //
-//            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
 //
-//            System.out.println("This board contains lists: ");
+//        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
 //
-//            trelloBoardDto.getLists().forEach(trelloList ->
-//                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
-//
-//        });
 //    }
+
+        // GET request
+        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+
+        trelloBoards.forEach(trelloBoardDto -> {
+
+            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
+
+            System.out.println("This board contains lists: ");
+
+            trelloBoardDto.getLists().forEach(trelloList ->
+                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
+
+        });
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto){
