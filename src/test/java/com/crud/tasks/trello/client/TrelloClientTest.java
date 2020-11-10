@@ -23,6 +23,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class TrelloClientTest {
 
+
     @InjectMocks
     private TrelloClient trelloClient;
 
@@ -66,9 +67,9 @@ public class TrelloClientTest {
 
         //given
         TrelloCardDto trelloCardDto = new TrelloCardDto(
-                "Test task", "Test descripion", "top", "test_id");
+                "Test task", "Test description", "top", "test_id");
 
-        URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
+        URI uri = new URI("http://test.com/cards?key=test&token=token&name=Test%20task&desc=Test%20description&pos=top&idList=test_id");
 
         CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
                 "1", "Test task", "http://test.com");
