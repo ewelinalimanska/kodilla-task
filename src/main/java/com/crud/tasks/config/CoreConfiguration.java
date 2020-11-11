@@ -25,7 +25,7 @@ public class CoreConfiguration implements WebMvcConfigurer {
         return new Docket(DocumentationType//udostępnienie metod pozwalających na konfigurację Swaggera
                 .SWAGGER_2)//typ dokumentacji
                 .select()//rozpoczęcie budowania konfiguracji
-                .apis(RequestHandlerSelectors.basePackage("com.crud.tasks.controller"))//na wybranie pakietów, które chcemy, aby zostały przeszukane w celu znalezienia controllerów.
+                .apis(RequestHandlerSelectors.basePackage("com.crud.tasks.controller"))//wybranie pakietów, które chcemy, aby zostały przeszukane w celu znalezienia controllerów.
                 .paths(PathSelectors.any())// pozwala na bardziej dogłębne skanowanie
                 .build(); //tworzenie obiektu Docket
     }
