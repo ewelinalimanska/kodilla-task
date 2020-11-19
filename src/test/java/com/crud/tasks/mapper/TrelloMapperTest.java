@@ -8,15 +8,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-//@RunWith(MockitoJUnitRunner.class)
 class TrelloMapperTest {
 
-//    @InjectMocks
     public TrelloMapper trelloMapper = new TrelloMapper();
-
-//    @Mock
-//    private TrelloBoardDto trelloBoardDto
-
 
     @Test
     public void testMapToBoards(){
