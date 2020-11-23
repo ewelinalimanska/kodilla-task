@@ -77,7 +77,7 @@ class TaskControllerTest {
     public void testUpdateTask() throws Exception {
 
         //given
-        TaskDto taskDto = new TaskDto(1L, "test_dto", "content_dto");
+        TaskDto taskDto = new TaskDto(1L, "test_dto", "test_dto");
 
         when(taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(taskDto)))).thenReturn(taskDto);
 
@@ -88,8 +88,10 @@ class TaskControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title", is("test_dto")))
                 .andExpect(jsonPath("$.id", is("1")))
-                .andExpect(jsonPath("$.title", is("test_dto")));
+                .andExpect(jsonPath("$.content", is("test_dto")));
     }
 
 
