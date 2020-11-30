@@ -135,6 +135,4 @@ class TaskControllerTest {
                 .andExpect(status().isOk());
         verify(dbService).deleteTask(task.getId());
     }
-
-
 }
